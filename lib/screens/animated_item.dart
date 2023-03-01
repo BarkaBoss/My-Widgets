@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
 
 class AnimateItem extends StatefulWidget {
   const AnimateItem({Key? key}) : super(key: key);
@@ -12,7 +13,6 @@ class _AnimateItemState extends State<AnimateItem>
   double? _deviceHeight, _deviceWidth;
   AnimationController? _shoeAnimationController;
 
-
   @override
   void initState() {
     super.initState();
@@ -23,37 +23,51 @@ class _AnimateItemState extends State<AnimateItem>
 
   @override
   Widget build(BuildContext context) {
-    _deviceWidth = MediaQuery
-        .of(context)
-        .size
-        .width;
-    _deviceHeight = MediaQuery
-        .of(context)
-        .size
-        .height;
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        Container(
-          width: _deviceWidth! * 0.60,
-          height: _deviceHeight! * 0.30,
-          decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                  colors: [Colors.purple, Colors.cyan],
-                  begin: Alignment.bottomLeft,
-                  end: Alignment.topRight
+    _deviceWidth = MediaQuery.of(context).size.width;
+    _deviceHeight = MediaQuery.of(context).size.height;
+    return Scaffold(
+      body: Center(
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Container(
+              width: _deviceWidth! * 0.60,
+              height: _deviceHeight! * 0.30,
+              decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                      colors: [Colors.purple, Colors.cyan],
+                      begin: Alignment.bottomLeft,
+                      end: Alignment.topRight),
+                  borderRadius: BorderRadius.circular(20)),
+              child: Transform.rotate(
+                angle: -math.pi / 2,
+                child: const Padding(
+                    padding: EdgeInsets.only(left: 5, top: 15),
+                    child: Text(
+                      "Nike",
+                      style: TextStyle(
+                          color: Colors.cyan,
+                          fontSize: 40,
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.bold),
+                    )),
               ),
-              borderRadius: BorderRadius.circular(20)
-          ),
+            ),
+            AnimatedBuilder(
+                animation: _shoeAnimationController!.view,
+                builder: (buildContext, child) {
+                  return Transform.translate(
+                    offset: Offset(_shoeAnimationController!.value,
+                        _shoeAnimationController!.value * -100),
+                    child: child,
+                  );
+                },
+                child: Image(
+                    width: _deviceWidth! * 0.7,
+                    image: AssetImage("assets/images/shoe.png")))
+          ],
         ),
-        AnimatedBuilder(
-          animation: _shoeAnimationController!.view,
-            builder: (buildContext, child){
-            return Transform.translate(offset: Offset(_shoeAnimationController!.value, _shoeAnimationController!.value * -100), child: child,);
-            },
-            child: Image(width: _deviceWidth! * 0.7,
-            image: AssetImage("assets/images/shoe.png")))
-      ],
+      ),
     );
   }
 }
