@@ -1,6 +1,5 @@
-# my_widgets
+# MY UI Components
 
-A new Flutter project.
 
 ## Getting Started
 
