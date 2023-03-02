@@ -137,9 +137,9 @@ class WeatherCard extends StatelessWidget {
           boxShadow: const [
             BoxShadow(
                 color: Color(0xffDDDDDD),
-                offset: Offset(3, 3),
-                blurRadius: 3,
-                spreadRadius: 2)
+                offset: Offset(6, 2),
+                blurRadius: 15,
+                spreadRadius: 3)
           ]),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
