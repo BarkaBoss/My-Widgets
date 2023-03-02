@@ -158,7 +158,7 @@ class WeatherCard extends StatelessWidget {
                 Row(
                   children: const[
                     Text("Ross", style: TextStyle(color: Colors.grey, fontSize: 12),),
-                    Icon(Icons.circle, size: 5, color: Colors.grey,),
+                    Icon(Icons.circle, size: 3, color: Colors.grey,),
                     Text("Updated 1 min ago", style: TextStyle(color: Colors.grey, fontSize: 10),)
                   ],
                 ),
