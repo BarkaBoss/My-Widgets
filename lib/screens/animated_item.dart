@@ -38,7 +38,8 @@ class _AnimateItemState extends State<AnimateItem>
                       colors: [Colors.purple, Colors.cyan],
                       begin: Alignment.bottomLeft,
                       end: Alignment.topRight),
-                  borderRadius: BorderRadius.circular(20)),
+                  borderRadius: BorderRadius.circular(20)
+              ),
               child: Transform.rotate(
                 angle: -math.pi / 2,
                 child: const Padding(
