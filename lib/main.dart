@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_widgets/screens/empty.dart';
 import 'package:my_widgets/screens/home.dart';
 import 'package:my_widgets/screens/animated_item.dart';
+import 'package:my_widgets/screens/yoga_lady.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: AnimateItem(),
+      home: LoopLady(),
     );
   }
 }
