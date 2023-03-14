@@ -1,29 +1,26 @@
 import 'package:flutter/material.dart';
 
-class LoopLady extends StatefulWidget {
-  const LoopLady({Key? key}) : super(key: key);
+class YogaLady extends StatefulWidget {
+  const YogaLady({Key? key}) : super(key: key);
 
   @override
-  State<LoopLady> createState() => _LoopLadyState();
+  State<YogaLady> createState() => _YogaLadyState();
 }
 
-class _LoopLadyState extends State<LoopLady>
-    with TickerProviderStateMixin {
+class _YogaLadyState extends State<YogaLady> with TickerProviderStateMixin{
   AnimationController? _ladyAnimation;
   AnimationController? _ringsAnimation;
+  double _radius = 300;
+
 
   @override
   void initState() {
-    super.initState();
-    _ladyAnimation = AnimationController(
-        vsync: this, duration: Duration(milliseconds: 2000));
-    _ladyAnimation!.repeat(reverse: true);
-
+    _ladyAnimation = AnimationController(vsync: this, duration: Duration(milliseconds: 2000));
     _ringsAnimation = AnimationController(vsync: this, duration: Duration(milliseconds: 2000));
+    
+    _ladyAnimation!.repeat(reverse: true);
     _ringsAnimation!.repeat(reverse: true);
   }
-
-  double _radius = 300;
 
   @override
   Widget build(BuildContext context) {
@@ -37,42 +34,43 @@ class _LoopLadyState extends State<LoopLady>
               children: [
                 AnimatedBuilder(
                   animation: _ringsAnimation!.view,
-                  builder: (context, child){
-                    return Transform.scale(scaleX: _ringsAnimation!.value*1, scaleY: _ringsAnimation!.value*1, child: child,);
+                  builder: (buildContext, child){
+                    return Transform.scale(scaleX: _ringsAnimation!.value * 1, scaleY: _ringsAnimation!.value * 1, child: child,);
                   },
                   child: Container(
                     width: _radius,
                     height: _radius,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(1000),
-                        color: Colors.cyan.withOpacity(0.2)
+                      borderRadius: BorderRadius.circular(1000),
+                      color: Colors.cyan.withOpacity(0.2)
                     ),
                   ),
                 ),
                 AnimatedBuilder(
                   animation: _ringsAnimation!.view,
-                  builder: (context, child){
-                    return Transform.scale(scaleX: _ringsAnimation!.value*0.8, scaleY: _ringsAnimation!.value*0.8, child: child,);
+                  builder: (buildContext, child){
+                    return Transform.scale(scaleX: _ringsAnimation!.value * 1, scaleY: _ringsAnimation!.value * 1, child: child,);
                   },
                   child: Container(
                     width: _radius - 80,
                     height: _radius - 80,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(200),
-                        color: Colors.cyan.withOpacity(0.5)),
+                        borderRadius: BorderRadius.circular(1000),
+                        color: Colors.cyan.withOpacity(0.5)
+                    ),
                   ),
                 ),
                 AnimatedBuilder(
                   animation: _ringsAnimation!.view,
-                  builder: (context, child){
-                    return Transform.scale(scaleX: _ringsAnimation!.value*0.7, scaleY: _ringsAnimation!.value*0.7, child: child,);
+                  builder: (buildContext, child){
+                    return Transform.scale(scaleX: _ringsAnimation!.value * 1, scaleY: _ringsAnimation!.value * 1, child: child,);
                   },
                   child: Container(
-                    height: _radius - 150,
                     width: _radius - 150,
+                    height: _radius - 150,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(200),
-                        color: Colors.cyan.withOpacity(0.75),
+                        borderRadius: BorderRadius.circular(1000),
+                        color: Colors.cyan.withOpacity(0.75)
                     ),
                   ),
                 ),
@@ -80,17 +78,11 @@ class _LoopLadyState extends State<LoopLady>
             ),
             Padding(
               padding: EdgeInsets.all(20),
-              child: AnimatedBuilder(
-                  animation: _ladyAnimation!.view,
-                  builder: (context, child) {
-                    return Transform.translate(
-                      offset: Offset(
-                          _ladyAnimation!.value, _ladyAnimation!.value * 50),
-                      child: child,
-                    );
-                  },
-                  child: Image( width: 400, image: AssetImage("assets/images/yoga_lady.png")),
-                ),
+              child: AnimatedBuilder(animation: _ladyAnimation!.view, builder: (buildContext, child){
+                return Transform.translate(offset: Offset(_ladyAnimation!.value, _ladyAnimation!.value *50 ), child: child,);
+              },
+                child: Image(image: AssetImage("assets/images/yoga_lady.png"),),
+              ),
             ),
           ],
         ),
