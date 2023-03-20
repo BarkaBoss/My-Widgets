@@ -34,6 +34,7 @@ class _DragToTargetState extends State<DragToTarget> {
                   color: Colors.cyan.shade700,
                   borderRadius: BorderRadius.circular(50)),
             ),
+            Text("Drag Across", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 18),),
             _dragIcon()
           ],
         )),
