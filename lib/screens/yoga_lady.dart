@@ -14,6 +14,13 @@ class _YogaLadyState extends State<YogaLady> with TickerProviderStateMixin{
 
 
   @override
+  void dispose() {
+    _ladyAnimation!.dispose();
+    _ringsAnimation!.dispose();
+    super.dispose();
+  }
+
+  @override
   void initState() {
     _ladyAnimation = AnimationController(vsync: this, duration: Duration(milliseconds: 2000));
     _ringsAnimation = AnimationController(vsync: this, duration: Duration(milliseconds: 2000));

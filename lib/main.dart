@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_widgets/screens/drag_target.dart';
 import 'package:my_widgets/screens/empty.dart';
 import 'package:my_widgets/screens/home.dart';
 import 'package:my_widgets/screens/animated_item.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: YogaLady(),
+      home: DragToTarget(),
     );
   }
 }
