@@ -34,7 +34,7 @@ class _DragToTargetState extends State<DragToTarget> {
                   color: Colors.cyan.shade700,
                   borderRadius: BorderRadius.circular(50)),
             ),
-            Text("Drag Across", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 18),),
+            const Text("Drag Across", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 18),),
             _dragIcon()
           ],
         )),
@@ -44,7 +44,7 @@ class _DragToTargetState extends State<DragToTarget> {
 
   Widget _dragIcon(){
     return Padding(
-      padding: EdgeInsets.all(15),
+      padding: EdgeInsets.all(5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
